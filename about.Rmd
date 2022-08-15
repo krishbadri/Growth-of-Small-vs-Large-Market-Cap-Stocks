@@ -1,0 +1,20 @@
+---
+title: "About this site"
+description: |
+   This website will explore the different between small and large weighted companies in the S&P 500 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## About me
+My name is **Krish Badri** and I am a rising junior at Olentangy Liberty High School. I like to play tennis and read books, and I am involved in many groups in my community such as Speech and Debate, Math, and Science Olympiad.
+
+Feel free to contact me at kpb.2006\@gmail.com.
+
+### Github Repository
+https://github.com/krishbadri/final_project/
+
+### David Kane Website Link
+https://bootcamp.davidkane.info/
