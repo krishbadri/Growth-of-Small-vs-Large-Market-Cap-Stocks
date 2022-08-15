@@ -1,0 +1,43 @@
+---
+title: "Stock Market Change Over Time"
+output: html_document
+#description: |
+#  This website will explore many different #relationships between mortality rate of #babies/toddlers and various variables
+#site: distill::distill_website
+date: "2022-08-15"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, root.dir = FALSE)
+library(tidyverse)
+library(tidycensus)
+library(tigris)
+library(ggthemes)
+library(distill)
+library(usethis)
+```
+
+```{r}
+library(readxl)
+library(tidyverse)
+general_data <- read_csv("C:\\Users\\Krish\\Desktop\\projects\\final_project\\archive\\symbols_valid_meta.csv")
+
+stocks_folder <- "C:\\Users\\Krish\\Desktop\\projects\\final_project\\archive\\stocks\\"
+file_list <- list.files(path=stocks_folder)
+setwd(stocks_folder)
+for (x in file_list) {
+  setwd(stocks_folder)
+  a = read_csv(x)
+  setwd(stocks_folder)
+  #ggplot(data = a, 
+  #       mapping = aes(x = Date,
+  #                     y=`Adj Close`)) + 
+  #  geom_point() + 
+  #  labs(
+  #    title="title", x="Date", y="Close"
+  #  )
+  break
+}
+  
+```
+
