@@ -1,7 +1,8 @@
---
-title: "proj_test"
-output: html_document
-date: "2022-08-15"
+---
+title: "Stock Market Analysis"
+description: |
+  Smaller vs Larger Companies in the Stock Market
+site: distill::distill_website
 ---
 
 ```{r setup, include=FALSE}
@@ -526,7 +527,6 @@ stocks = c(
 "VNO",
 "PVH"
 )
-
 sp_500 = list()
 for (stock in files) 
 {
@@ -538,22 +538,19 @@ for (stock in files)
   }
 }
 ```
+
 ```{r top10}
 top10 = stocks[1:10]
-
 #doesn't work
-top10 |> ggplot(mapping = aes(x = date, y = `Adj close`, color="red"))
+top10
+#top10 |> ggplot(mapping = aes(x = date, y = `Adj close`, color="red"))
 # how do I do this?
-
-
-
-
-
-
-
-
-
-
 bottom10 = stocks[473:482]
+```
+cbind
+rbind
+
+```{r}
+#aapl_stock <- read_csv()
 ```
 
