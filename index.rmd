@@ -541,8 +541,9 @@ for (stock in files)
 ```{r top10}
 top10 = stocks[1:10]
 
+#doesn't work
 top10 |> ggplot(mapping = aes(x = date, y = `Adj close`, color="red"))
-
+# how do I do this?
 
 
 
