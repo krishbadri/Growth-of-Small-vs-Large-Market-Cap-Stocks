@@ -1,5 +1,5 @@
 ---
-title: "About this site"
+title: "About Me and This Project"
 description: |
    This website will explore the different between small and large weighted companies in the S&P 500 
 ---
