@@ -5,6 +5,8 @@ description: |
 site: distill::distill_website
 ---
 
+The stock market is an area of interest for many around the world. The following data was pulled from a Kaggle dataset. Then, the relevant data frames were joined to analyze the average opening and adjusted closing price of different groups of stocks over time, spanning multiple decades. The average small market cap stock in the S&P 500 is growing at a rate much faster than the average growth of high market cap stocks at the top of the S&P 500 Weighting List.
+
 ```{r setup, include=FALSE}
 library(tidyverse)
 knitr::opts_chunk$set(echo = FALSE)

@@ -1,0 +1,11 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/932644/eae6498ea40f427fb0c20de416528255
+bundleId: https://api.rpubs.com/api/v1/document/932644/eae6498ea40f427fb0c20de416528255
+url: http://rpubs.com/krishbadri/932644
+when: 1660575745.81844
+lastSyncTime: 1660575745.81846
