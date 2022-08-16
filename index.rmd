@@ -543,16 +543,83 @@ for (stock in files)
 
 ```{r top10}
 top10 = stocks[1:10]
-#doesn't work
 top10
+#doesn't work
 #top10 |> ggplot(mapping = aes(x = date, y = `Adj close`, color="red"))
 # how do I do this?
 bottom10 = stocks[473:482]
+bottom10
 ```
-cbind
-rbind
 
 ```{r}
-#aapl_stock <- read_csv()
+# use cbind and rbind to combine dataframes
+
+
+# top 10
+aapl_stock <- read_csv("AAPL.csv")
+msft_stock <- read_csv("MSFT.csv")
+googl_stock <- read_csv("GOOGL.csv")
+tsla_stock <- read_csv("TSLA.csv")
+unh_stock <- read_csv("UNH.csv")
+nvda_stock <- read_csv("NVDA.csv")
+jnj_stock <- read_csv("JNJ.csv")
+xom_stock <- read_csv("XOM.csv")
+jpm_stock <- read_csv("JPM.csv")
+wmt_stock <- read_csv("WMT.csv")
+
+top_stocks_combined <- rbind(aapl_stock, msft_stock, googl_stock, tsla_stock, unh_stock, nvda_stock, jnj_stock, xom_stock, jpm_stock, wmt_stock)
+
+#top_stocks_combined["Name"] = rep(c("AAPL"), each = nrow("AAPL.csv"))
+#rep(c("A","B","C","D","E"),each=4)
+
+top_stocks_combined["Name"] = c()
+#____________________________________________________________
+# experimentation, delete when done
+apple_list <- list()
+apple <- read_csv("AAPL.csv")
+apple_rows <- nrow(apple["Date"])
+for (n in 1:apple_rows)
+{
+  apple_list[[length(apple_list) + 1]] = "AAPL"
+}
+apple_list
+nrow(top_stocks_combined)
+for (i in length(apple_list):nrow(top_stocks_combined))
+{
+  apple_list[[length(apple_list) + 1]] = "filler value"
+}
+
+top_stocks_combined["Name"] = apple_list
+
+
+
+#____________________________________________________________
+#for (n in nrow("AAPL.csv"))
+#{
+#  top_stocks_combined["Name"][[length(top_stocks_combined["Name"] + #1)]] = n
+#}
+
+#print(top_stocks_combined["Name"])
+
+
+#top_10_plot <- top_stocks_combined |> ggplot(data=top_stocks_combined, mapping = aes(x = Date, y = Open)) + geom_point(size=0.4) + geom_smooth(se=TRUE)
+#top_10_plot
+
+
+
+# bottom 10
+#uhs_stock <- read_csv("UHS.csv")
+#nwl_stock <- read_csv("NWL.csv")
+#ftnt_stock <- read_csv("FTNT.csv")
+#ivz_stock <- read_csv("IVZ.csv")
+#pnw_stock <- read_csv("PNW.csv")
+#dxcm_stock <- read_csv("DXCM.csv")
+#see_stock <- read_csv("SEE.csv")
+#frt_stock <- read_csv("FRT.csv")
+#mhk_stock <- read_csv("MHK.csv")
+#pnr_stock <- read_csv("PNR.csv")
+
+
+
 ```
 
