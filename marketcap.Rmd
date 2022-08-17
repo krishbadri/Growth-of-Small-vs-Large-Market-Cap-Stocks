@@ -7,6 +7,8 @@ date: "2022-08-17"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 knitr::opts_knit$set(root.dir = "C:\\Users\\Krish\\Desktop\\projects\\final_project\\archive\\stocks\\")
+
+library(tidyverse)
 ```
 
 ```{r}
@@ -22,7 +24,64 @@ xom_stock <- read_csv("XOM.csv")
 jpm_stock <- read_csv("JPM.csv")
 wmt_stock <- read_csv("WMT.csv")
 
+top_stocks_new_column = c()
+
+for (n in 1:nrow(read_csv("AAPL.csv")))
+{
+  top_stocks_new_column <- append(top_stocks_new_column, "AAPL")
+}
+
+for (n in 1:nrow(read_csv("MSFT.csv")))
+{
+  top_stocks_new_column <- append(top_stocks_new_column, "MSFT")
+}
+
+for (n in 1:nrow(read_csv("GOOGL.csv")))
+{
+  top_stocks_new_column <- append(top_stocks_new_column, "GOOGL")
+}
+
+for (n in 1:nrow(read_csv("TSLA.csv")))
+{
+  top_stocks_new_column <- append(top_stocks_new_column, "TSLA")
+}
+
+for (n in 1:nrow(read_csv("UNH.csv")))
+{
+  top_stocks_new_column <- append(top_stocks_new_column, "UNH")
+}
+
+for (n in 1:nrow(read_csv("NVDA.csv")))
+{
+  top_stocks_new_column <- append(top_stocks_new_column, "NVDA")
+}
+
+for (n in 1:nrow(read_csv("JNJ.csv")))
+{
+  top_stocks_new_column <- append(top_stocks_new_column, "JNJ")
+}
+
+for (n in 1:nrow(read_csv("XOM.csv")))
+{
+  top_stocks_new_column <- append(top_stocks_new_column, "XOM")
+}
+
+for (n in 1:nrow(read_csv("JPM.csv")))
+{
+  top_stocks_new_column <- append(top_stocks_new_column, "JPM")
+}
+
+for (n in 1:nrow(read_csv("WMT.csv")))
+{
+  top_stocks_new_column <- append(top_stocks_new_column, "WMT")
+}
+
 top_stocks_combined <- rbind(aapl_stock, msft_stock, googl_stock, tsla_stock, unh_stock, nvda_stock, jnj_stock, xom_stock, jpm_stock, wmt_stock)
+
+top_stocks_combined <- cbind(top_stocks_combined, top_stocks_new_column)
+
+top_stocks_plot <- ggplot(data=top_stocks_combined, mapping=aes(x=Date, y=Open, color=factor(top_stocks_new_column))) + geom_point()
+top_stocks_plot
 
 #top_stocks_combined["Name"] = rep(c("AAPL"), each = nrow("AAPL.csv"))
 #rep(c("A","B","C","D","E"),each=4)

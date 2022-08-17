@@ -584,7 +584,7 @@ for (n in 1:nrow(read_csv("MSFT.csv")))
 
 full_data_2 <- cbind(full_data, new_column)
 typeof(full_data_2)
-d <- ggplot(data=full_data_2, mapping=aes(x=Date, y=Open, color=factor())) + geom_point()
+d <- ggplot(data=full_data_2, mapping=aes(x=Date, y=Open, color=factor(new_column))) + geom_point()
 d
 
 xplot <- full_data |> ggplot(mapping = aes(x = Date, y = Open, show.legend = FALSE)) + geom_point(size=0.75) + geom_smooth(se=TRUE) + scale_x_date(limits = as.Date(c("1995-01-03", "2020-04-01"))) + coord_cartesian(ylim=c(0,350)) + labs(x="Year", y="Opening Price")
