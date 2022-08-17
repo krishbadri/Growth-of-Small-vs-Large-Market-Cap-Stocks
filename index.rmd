@@ -598,7 +598,16 @@ for (n in nrow("AAPL.csv"))
 glimpse(top_stocks_combined)
 
 
-top_10_plot <- top_stocks_combined |> ggplot(data=top_stocks_combined, mapping = aes(x = Date, y = Open)) + geom_point(size=0.0001) + geom_smooth(se=TRUE)# + coord_cartesian(xlim=c(as.Date(1990, origin=“1990-01-01”), as.Date(2023, origin=“2023-01-01”)))
+
+library(tidyverse)
+library(gganimate)
+library(transformr)
+theme_set(theme_bw())
+
+
+
+top_10_plot <- top_stocks_combined |> ggplot(data=top_stocks_combined, mapping = aes(x = Date, y = Open, size=Volume, show.legend = FALSE)) + geom_point() + geom_smooth(se=TRUE, color="red") + labs(title="Prices of Top 10 Weighted Stocks Since 1995", x = "Year", y = "Opening Price", caption = "Source: Oleh Onyshchak") + theme_minimal() + scale_x_date(limits = as.Date(c("1995-01-03", "2020-04-01"))) + coord_cartesian(ylim=c(0,1500)) #+ transition_time(Date) +
+  #labs(title = "Year: {frame_time}")
 top_10_plot
 
 
@@ -617,9 +626,8 @@ pnr_stock <- read_csv("PNR.csv")
 
 bottom_stocks_combined <- rbind(uhs_stock, nwl_stock, ftnt_stock, ivz_stock, pnw_stock, dxcm_stock, see_stock, frt_stock, mhk_stock, pnr_stock)
 
-bottom_10_plot <- bottom_stocks_combined |> ggplot(data=bottom_stocks_combined, mapping = aes(x = Date, y = Open)) + geom_point(size=0.4) + geom_smooth(se=TRUE)
+bottom_10_plot <- bottom_stocks_combined |> ggplot(data=bottom_stocks_combined, mapping = aes(x = Date, y = Open, size=Volume, show.legend = FALSE)) + geom_point() + geom_smooth(se=TRUE, color="red") + scale_x_date(limits = as.Date(c("1995-01-03", "2020-04-01"))) + coord_cartesian(ylim=c(0,400)) + labs(title="Prices of Bottom 10 Weighted Stocks Since 1995", x="Year", y="Opening Price", caption="Source: Oleh Onyschak")
 bottom_10_plot
-
 
 ```
 
