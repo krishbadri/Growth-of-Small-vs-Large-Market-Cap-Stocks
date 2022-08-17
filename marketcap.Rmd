@@ -1,5 +1,5 @@
 ---
-title: "marketcap"
+title: "Market-Cap Stock Analysis"
 output: html_document
 date: "2022-08-17"
 ---
@@ -8,22 +8,74 @@ date: "2022-08-17"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+```{r}
+# top 10
+aapl_stock <- read_csv("AAPL.csv")
+msft_stock <- read_csv("MSFT.csv")
+googl_stock <- read_csv("GOOGL.csv")
+tsla_stock <- read_csv("TSLA.csv")
+unh_stock <- read_csv("UNH.csv")
+nvda_stock <- read_csv("NVDA.csv")
+jnj_stock <- read_csv("JNJ.csv")
+xom_stock <- read_csv("XOM.csv")
+jpm_stock <- read_csv("JPM.csv")
+wmt_stock <- read_csv("WMT.csv")
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+top_stocks_combined <- rbind(aapl_stock, msft_stock, googl_stock, tsla_stock, unh_stock, nvda_stock, jnj_stock, xom_stock, jpm_stock, wmt_stock)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+#top_stocks_combined["Name"] = rep(c("AAPL"), each = nrow("AAPL.csv"))
+#rep(c("A","B","C","D","E"),each=4)
 
-```{r cars}
-summary(cars)
+#top_stocks_combined["Name"] = c()
+#____________________________________________________________
+# experimentation, delete when done
+#apple_list <- list()
+#apple <- read_csv("AAPL.csv")
+#apple_rows <- nrow(apple["Date"])
+#for (n in 1:apple_rows)
+#{
+#  apple_list[[length(apple_list) + 1]] = "AAPL"
+#}
+
+#nrow(top_stocks_combined)
+#for (i in length(apple_list):nrow(top_stocks_combined))
+#{
+#  apple_list[[length(apple_list) + 1]] = "filler value"
+#}
+
+#____________________________________________________________
+for (n in nrow("AAPL.csv"))
+{
+  top_stocks_combined["Name"] <- top_stocks_combined["Name"][[length(top_stocks_combined["Name"] + 1)]] = n
+}
+
+glimpse(top_stocks_combined)
+
+
+
+
+
+top_10_plot <- top_stocks_combined |> ggplot(data=top_stocks_combined, mapping = aes(x = Date, y = Open, size=Volume, show.legend = FALSE)) + geom_point() + geom_smooth(se=TRUE, color="red") + labs(title="Prices of Top 10 Weighted Stocks Since 1995", x = "Year", y = "Opening Price", caption = "Source: Oleh Onyshchak") + theme_minimal() + scale_x_date(limits = as.Date(c("1995-01-03", "2020-04-01"))) + coord_cartesian(ylim=c(0,1500)) #+ transition_time(Date) +
+  #labs(title = "Year: {frame_time}")
+#top_10_plot
+
+
+
+# bottom 10
+uhs_stock <- read_csv("UHS.csv")
+nwl_stock <- read_csv("NWL.csv")
+ftnt_stock <- read_csv("FTNT.csv")
+ivz_stock <- read_csv("IVZ.csv")
+pnw_stock <- read_csv("PNW.csv")
+dxcm_stock <- read_csv("DXCM.csv")
+see_stock <- read_csv("SEE.csv")
+frt_stock <- read_csv("FRT.csv")
+mhk_stock <- read_csv("MHK.csv")
+pnr_stock <- read_csv("PNR.csv")
+
+bottom_stocks_combined <- rbind(uhs_stock, nwl_stock, ftnt_stock, ivz_stock, pnw_stock, dxcm_stock, see_stock, frt_stock, mhk_stock, pnr_stock)
+
+bottom_10_plot <- bottom_stocks_combined |> ggplot(data=bottom_stocks_combined, mapping = aes(x = Date, y = Open, size=Volume, show.legend = FALSE)) + geom_point() + geom_smooth(se=TRUE, color="red") + scale_x_date(limits = as.Date(c("1995-01-03", "2020-04-01"))) + coord_cartesian(ylim=c(0,400)) + labs(title="Prices of Bottom 10 Weighted Stocks Since 1995", x="Year", y="Opening Price", caption="Source: Oleh Onyschak")
+bottom_10_plot
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
