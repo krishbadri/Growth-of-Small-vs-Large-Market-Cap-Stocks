@@ -639,6 +639,10 @@ faang_combined <- cbind(faang_combined, faang_new_column)
 
 faang_plot <- ggplot(data=faang_combined, mapping=aes(x=Date, y=Open, color=factor(faang_new_column))) + geom_point(size=0.5) +theme_minimal() + coord_cartesian(ylim=c(0,1500)) + geom_smooth(color="black", se=TRUE) + labs(title="The Rise of Top Tech Stocks", x = "Year", y = "Open", caption = "Source: Oleh Onyshchak",colour = "Stock Ticker") 
 
+faang_plot+ transition_time(Date) +
+  labs(title = "Year: {frame_time}") +
+  shadow_mark(alpha = 0.3, size = 0.5)
+
 faang_plot
 ```
 At first glance, the top stocks in the technology sector seem to be growing rapidly, from their founding. One can see that their stocks have gone from worth barely anything to worth thousands of dollars in 30 years. Although this is true, is this really the fastest growing group of stocks?

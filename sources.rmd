@@ -9,12 +9,9 @@ output: distill::distill_article
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-
+## What dataset was used and how was it used
 URL: https://www.kaggle.com/datasets/jacksoncrow/stock-market-dataset
 
-## What dataset was used and how was it used
-**www.kaggle.com**
-
-I used Kaggle to access my data set. The data includes information on stocks and ETFs for date, opening price, high price, low price, closing price, adjusted closing price, and trading volume
+I used Kaggle to access my data set. The data includes information on stocks and ETFs for date, opening price, high price, low price, closing price, adjusted closing price, and trading volume.
 
 I wanted to compare the growth between smaller and larger companies in the S&P 500, and I did this using the top 10 and bottom 10 of the weighting list.

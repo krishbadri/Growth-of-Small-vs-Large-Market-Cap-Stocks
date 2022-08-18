@@ -1,4 +1,4 @@
-name: "Stock Analysis"
+name: "Growth of Small vs Large Market-Cap Stocks                                           "
 title: "Smaller vs Larger Companies in the Stock Market"
 description: |
   How has this trend changed over time? What will happen in the future?
@@ -13,4 +13,4 @@ navbar:
       href: sources.html
     - text: "Market-Cap Analysis"
       href: marketcap.html
-output: distill::distill_article
+output: distill::distill_article 
