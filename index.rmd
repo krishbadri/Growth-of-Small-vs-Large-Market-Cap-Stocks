@@ -1,5 +1,5 @@
 ---
-title: "Stock Market Analysis"
+title: "Growth of Small vs Large Market-Cap Stocks"
 description: |
   Smaller vs Larger Companies in the Stock Market
 site: distill::distill_website
@@ -641,6 +641,6 @@ faang_plot <- ggplot(data=faang_combined, mapping=aes(x=Date, y=Open, color=fact
 
 faang_plot
 ```
-At first glance, the top stocks in the technology sector seem to be growing rapidly, from their founding. One can see that their stocks have gone from worth barely anything to worth thousands of dollars in 30 years. Although this is true, is this really the fastest growing sector?
+At first glance, the top stocks in the technology sector seem to be growing rapidly, from their founding. One can see that their stocks have gone from worth barely anything to worth thousands of dollars in 30 years. Although this is true, is this really the fastest growing group of stocks?
 
 
