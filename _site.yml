@@ -7,10 +7,10 @@ navbar:
   right:
     - text: "Home"
       href: index.html
+    - text: "Market-Cap Analysis"
+      href: marketcap.html
     - text: "About"
       href: about.html
     - text: "Sources"
       href: sources.html
-    - text: "Market-Cap Analysis"
-      href: marketcap.html
 output: distill::distill_article 

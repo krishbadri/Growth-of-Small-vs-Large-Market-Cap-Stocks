@@ -23,7 +23,6 @@ for (n in 1:2) {
                           `Adj Close` = col_double()))
   a <- a |> drop_na() |> select(Date, `Adj Close`)
   
-  
     
   #plot_test <- ggplot(data = a, aes(x = Date, y = `Adj Close`))+
   #  geom_point(size=0.5) + 
