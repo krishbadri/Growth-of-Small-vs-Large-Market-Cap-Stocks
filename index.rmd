@@ -5,7 +5,7 @@ description: |
 site: distill::distill_website
 ---
 
-The stock market is an area of interest for many around the world. The following data was pulled from a Kaggle dataset. Then, the relevant data frames were joined to analyze the average opening and adjusted closing price of different groups of stocks over time, spanning multiple decades. The average small market cap stock in the S&P 500 is growing at a rate much faster than the average growth of high market cap stocks at the top of the S&P 500 Weighting List.
+The stock market is an area of interest for many around the world, with plenty of data available for analysis. The following data was pulled from a Kaggle dataset created by Oleh Onyshchak with data on over 8000 Stocks. Then, the relevant data frames were joined to analyze the average opening and adjusted closing price of different groups of stocks over time, spanning multiple decades. The average small market cap stock in the S&P 500 is growing at a rate much faster than the average growth of high market cap stocks at the top of the list.
 
 ```{r setup, include=FALSE}
 library(tidyverse)
@@ -583,15 +583,14 @@ for (n in 1:nrow(read_csv("MSFT.csv")))
 
 
 full_data_2 <- cbind(full_data, new_column)
-typeof(full_data_2)
 d <- ggplot(data=full_data_2, mapping=aes(x=Date, y=Open, color=factor(new_column))) + geom_point()
-d
+#d
 
 xplot <- full_data |> ggplot(mapping = aes(x = Date, y = Open, show.legend = FALSE)) + geom_point(size=0.75) + geom_smooth(se=TRUE) + scale_x_date(limits = as.Date(c("1995-01-03", "2020-04-01"))) + coord_cartesian(ylim=c(0,350)) + labs(x="Year", y="Opening Price")
 #xplot <- xplot + transition_time(Date) +
 #  labs(title = "Year: {frame_time}") +
 #  view_follow(fixed_y = TRUE)
-xplot
+#xplot
 
 #q = read_csv("AAPL.csv")
 #w = ggplot(q, aes(x=Date, y=`Adj Close`)) + geom_point()
@@ -599,5 +598,49 @@ xplot
 #  labs(title = "Year: {frame_time}") +
 #  shadow_wake(wake_length = 0.5, alpha = FALSE)
 
+
+
+
+
+
+# HOME PAGE PLOT:
+
+faang_new_column = c()
+
+for (n in 1:nrow(read_csv("FB.csv")))
+{
+  faang_new_column <- append(faang_new_column, "FB")
+}
+
+for (n in 1:nrow(read_csv("AMZN.csv")))
+{
+  faang_new_column <- append(faang_new_column, "AMZN")
+}
+
+for (n in 1:nrow(read_csv("AAPL.csv")))
+{
+  faang_new_column <- append(faang_new_column, "AAPL")
+}
+
+for (n in 1:nrow(read_csv("NFLX.csv")))
+{
+  faang_new_column <- append(faang_new_column, "NFLX")
+}
+
+for (n in 1:nrow(read_csv("GOOGL.csv")))
+{
+  faang_new_column <- append(faang_new_column, "GOOGL")
+}
+
+
+faang_combined <- rbind(read_csv("FB.csv"), read_csv("AMZN.csv"), read_csv("AAPL.csv") ,read_csv("NFLX.csv"), read_csv("GOOGL.csv"))
+
+faang_combined <- cbind(faang_combined, faang_new_column)
+
+faang_plot <- ggplot(data=faang_combined, mapping=aes(x=Date, y=Open, color=factor(faang_new_column))) + geom_point(size=0.5) +theme_minimal() + coord_cartesian(ylim=c(0,1500)) + geom_smooth(color="black", se=TRUE) + labs(title="The Rise of Top Tech Stocks", x = "Year", y = "Open", caption = "Source: Oleh Onyshchak",colour = "Stock Ticker") 
+
+faang_plot
 ```
+At first glance, the top stocks in the technology sector seem to be growing rapidly, from their founding. One can see that their stocks have gone from worth barely anything to worth thousands of dollars in 30 years. Although this is true, is this really the fastest growing sector?
+
 

@@ -1,7 +1,7 @@
 ---
 title: "Market-Cap Stock Analysis"
-output: html_document
-date: "2022-08-17"
+description: |
+ Analysis on Market-Cap 
 output: distill::distill_article
 ---
 
@@ -224,4 +224,17 @@ bottom_stocks_plot
 #bottom_10_plot <- bottom_stocks_combined |> ggplot(data=bottom_stocks_combined, mapping = aes(x = Date, y = Open, size=Volume, color="orange", show.legend = FALSE)) + geom_point() + geom_smooth(se=TRUE, color="red") + scale_x_date(limits = as.Date(c("1995-01-03", "2020-04-01"))) + coord_cartesian(ylim=c(0,1500)) + labs(title="Prices of Bottom 10 Weighted Stocks Since 1995", x="Year", y="Opening Price", caption="Source: Oleh Onyschak")
 #bottom_10_plot
 ```
+
+## Analysis
+
+Although they look like they are growing fast, Large Market-Cap stocks are not growing fast as of late. They are in fact slowing down due to their size. However, this makes them more stable as one can observe that in 2008, they were not impacted very much by the recession. However, Small Market-Cap stocks were impacted much more and are seen as more volatile. Small Market-Cap stocks are growing at a faster rate, although it is difficult to quantify. 
+
+
+
+
+
+
+
+
+
 
